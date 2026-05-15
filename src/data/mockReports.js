@@ -1,0 +1,50 @@
+export const socReports = [
+  {
+    id: 'RPT-2025-0047',
+    title: 'LockBit 4.0 Campaign Analysis — Q2 2025',
+    classification: 'TLP:RED — RESTRICTED',
+    date: '2025-05-15',
+    analyst: 'AI Sentinel Engine v3.2',
+    threat_actor: 'LockBit 4.0',
+    severity: 'CRITICAL',
+    executive_summary: 'LockBit 4.0 has demonstrated a significant escalation in targeting critical infrastructure sectors during Q2 2025. Intelligence gathered from 14 underground forums, 3 onion sites, and 7 confirmed victim organizations indicates an evolved TTPs framework including double-extortion with DDoS pressure campaigns. AI confidence in attribution: 96.4%.',
+    affected_sectors: ['Finance', 'Healthcare', 'Manufacturing', 'Government'],
+    ioc_count: 147,
+    timeline_events: [
+      { date: '2025-04-02', event: 'New LockBit infrastructure detected via passive DNS monitoring' },
+      { date: '2025-04-14', event: 'First victim posted — European logistics company' },
+      { date: '2025-04-28', event: 'Affiliate recruitment drive on XSS.is and Exploit.in' },
+      { date: '2025-05-03', event: 'Tooling update — New encryptor with UEFI targeting' },
+      { date: '2025-05-10', event: 'Three simultaneous victims published — Ransom demands totaling $34M' },
+      { date: '2025-05-15', event: 'ManuCorp Industries breach announced — 4.7TB exfiltrated' },
+    ],
+    iocs: [
+      { type: 'Domain',  value: 'lockbit4-xhj23.onion',       confidence: 'HIGH',  status: 'ACTIVE'   },
+      { type: 'IP',      value: '185.220.101.47',              confidence: 'HIGH',  status: 'ACTIVE'   },
+      { type: 'IP',      value: '192.168.47.23',               confidence: 'MEDIUM',status: 'ACTIVE'   },
+      { type: 'Hash',    value: 'SHA256: 3f4a9b2c1e8d7a6f...',confidence: 'HIGH',  status: 'ACTIVE'   },
+      { type: 'Email',   value: 'j0hn_d03@protonmail.com',    confidence: 'MEDIUM',status: 'MONITORING'},
+      { type: 'Wallet',  value: 'bc1q...xKj9a7f2m',           confidence: 'HIGH',  status: 'ACTIVE'   },
+    ],
+    mitigations: [
+      'Implement application whitelisting on all endpoints',
+      'Enforce MFA across all remote access vectors',
+      'Disable unnecessary SMB and RDP exposure',
+      'Deploy EDR with behavioral analysis on critical servers',
+      'Segment backup infrastructure from primary network',
+      'Monitor for LockBit IOCs using provided hash and IP list',
+    ],
+    risk_rating: 97,
+  },
+]
+
+export const timelineEvents = [
+  { id: 1, date: 'APR 02',  time: '03:14',  title: 'Initial Compromise Detected',     desc: 'VPN credential exploitation via stolen access', severity: 'medium', phase: 'Initial Access'      },
+  { id: 2, date: 'APR 03',  time: '11:22',  title: 'Lateral Movement Begins',          desc: 'Cobalt Strike beacons across internal network',  severity: 'high',   phase: 'Execution'           },
+  { id: 3, date: 'APR 05',  time: '22:47',  title: 'Data Exfiltration Starts',         desc: '4.7TB transferred to C2 via encrypted tunnels',  severity: 'critical',phase: 'Exfiltration'       },
+  { id: 4, date: 'APR 07',  time: '04:13',  title: 'Ransomware Deployed',              desc: 'LockBit 4.0 encryptor triggered on 2,847 hosts', severity: 'critical',phase: 'Impact'             },
+  { id: 5, date: 'APR 07',  time: '05:00',  title: 'Ransom Note Delivered',            desc: '$12M demand. 72-hour deadline communicated.',    severity: 'critical',phase: 'Extortion'          },
+  { id: 6, date: 'APR 09',  time: '16:30',  title: 'Breach Published on Leak Blog',   desc: 'Victim named publicly. Proof-of-life files shared',severity: 'critical',phase: 'Publication'      },
+  { id: 7, date: 'APR 12',  time: '09:15',  title: 'Underground Discussion Spike',    desc: '+847% chatter increase across monitored forums', severity: 'high',   phase: 'Intelligence'        },
+  { id: 8, date: 'MAY 15',  time: '14:23',  title: 'DarkWeb Sentinel Detection',      desc: 'AI system flags pattern — intelligence compiled', severity: 'info',   phase: 'Detection'          },
+]
